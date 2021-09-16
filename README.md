@@ -4,7 +4,7 @@ Java SE 백서 한국어 번역
 
 ## 문서
 
-- [Memory Management in the Java HotSpot Virtual Machine](./memory_management_in_the_java_hotspot_virtual_machine.md)
+- (**진행중**) [Memory Management in the Java HotSpot Virtual Machine](./memory_management_in_the_java_hotspot_virtual_machine.md)
 
 ## 참고
 
