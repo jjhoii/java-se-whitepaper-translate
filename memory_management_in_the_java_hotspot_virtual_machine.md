@@ -96,9 +96,21 @@ Java™ 2 플랫폼인 Standard Edition(J2SE™)의 한 가지 장점은 자동 
 
 일부 젊은 세대 컬렉션에서 처리되지 않은 객체들은 결국 오래된 세대(Old Generation)로 승격되거나 유지됩니다(그림 1 참조). 이 세대는 전형적으로 젊은 세대보다 더 크고 점유율이 더 느립니다. 따라서 오래된 세대 컬렉션은 가끔 발생하지만 완료하는 데 시간이 상당히 오래 걸립니다.
 
-![Figure 1. Generatonal garbage collection](./images/Figure_1.png)
+![그림1. Generatonal garbage collection](./images/Figure_1.png)
 
 젊은 세대를 위해 선택된 가비지 컬렉션 알고리즘은 젊은 세대 수집이 빈번하기 때문에 일반적으로 속도를 중요시합니다. 반면에 오래된 세대는 일반적으로 공간 효율적인 알고리즘에 의해 관리되는데, 오래된 세대는 힙의 대부분을 차지하고 오래된 세대 컬렉션 알고리즘은 낮은 가비지 밀도에서 잘 작동해야 하기 때문이다.
+
+## 4 J2SE 5.0 HotSpot JVM의 가비지 컬렉터
+
+Java HotSpot 가상 머신에는 J2SE 5.0 update 6부터 4개의 가비지 컬렉터가 포함되어 있습니다. 이 섹션에서는 컬렉션의 타입과 세대, 객체 할당이 종종 빠르고 효율적인 이유에 대해 설명합니다. 그런 다음 각 가비지 컬렉터에 대한 자세한 정보를 제공합니다.
+
+### HotSpot Generations
+
+Java HotSpot 가상 머신의 메모리는 Young Generation, Old Generation 및 Permanent Generation 세 가지 영역으로 구성됩니다. 대부분의 객체는 초기에 Young Generation 영역에 할당됩니다. Old Generation에는 Young Generation 영역에서 생존한 일부 객체와 Old Generation에 직접 할당될 수 있는 일부 큰 객체가 포함됩니다.
+
+Young Generation은 그림 2와 같이 Eden이라는 영역과 두 개의 작은 Survivor 영역으로 구성됩니다. 대부분의 객체는 초기에 Eden에 할당됩니다. 큰 객체는 Old Generation 영역에 직접 할당될 수 있습니다. Survivor 영역에는 Young Generation 영역에서 가비지 컬렉션이 진행되었을 때, 생존한 객체가 있습니다. 하나의 Survivor 영역(그림에서 From으로 표시됨)은 생존한 객체를 보유하고 또다른 Survivor 영역은 다음 컬렉션까지 사용되지 않은 상태로 유지됩니다.
+
+![그림2. Young Generation 메모리 영역](./images/Figure_2.png)
 
 **추가 예정**
 
