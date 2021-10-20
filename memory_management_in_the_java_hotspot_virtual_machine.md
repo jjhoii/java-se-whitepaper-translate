@@ -112,6 +112,12 @@ Young Generation은 그림 2와 같이 Eden이라는 영역과 두 개의 작은
 
 ![그림2. Young Generation 메모리 영역](./images/Figure_2.png)
 
+### 가비지 컬렉션 유형
+
+Young Generation 영역이 채워지면 Young Generation Collection(Minor Collection)이 수행됩니다. Old, Permanent Generation 영역이 채워지면 Full Collection(Major Collection)이 수행됩니다. 일반적으로 Young Generation 영역을 위한 특별히 설계된 컬렉션 알고리즘을 사용하여 가비지 컬렉션이 진행됩니다. 그런 다음 Old Generation Collection 알고리즘을 사용하여 Old, Permanent Generation 영역에 가비지 컬렉션이 진행됩니다. 압축이 발생하면 각 Generation 영역에 압축됩니다.
+
+가끔 Young Generation 영역에 가비지 컬렉션이 진행될 때, Old Generation 영역에 객체를 이동할 공간이 부족할 수 있습니다. 이 경우 CMS 가비지 컬렉터를 제외한 다른 가비지 컬렉터는 Young Generation 가비지 컬렉션을 진행하지 않습니다. 대신 전체 힙에서 Old Generation Collection 알고리짐을 사용해 가비지 컬렉션이 진행됩니다. (CMS의 Old Generation Collection 알고리즘은 젊은 세대를 수집할 수 없기 때문에 특수한 경우)
+
 **추가 예정**
 
 ## 참고
